@@ -28,10 +28,10 @@ Modificadores de sinal -- ``signed``, ``unsigned``
 A palavra ``int`` pode ser omitida quando se lhe aplica modificadores.
 Por exemplo, a palavra ``short`` isolada é equivalente a ``short int``.
 
-Representação
--------------
+Representação binária
+---------------------
 
-Os valores são representados em sequências contíguas de um ou mais *bytes*.
+Os valores são representados por sequências contíguas de *bytes*.
 
 Os valores *unsigned* são codificados em binário natural.
 
@@ -42,10 +42,9 @@ Os valores *signed* são codificados em código dos complementos para dois
    :align: center
    :scale: 120%
 
-   Representação de valores inteiros
+   Representação de valores numéricos
 
-A linguagem C não define a representação interna dos valores *float*.
-A norma IEEE754 é a mais utilizada.
+Os valores *float* são codificados segundo a norma `IEEE 754 <https://en.wikipedia.org/wiki/IEEE_754>`_.
 
 Dimensões
 ---------
@@ -56,6 +55,71 @@ Os tipos *standard* são codificados com um número de *bits* múltiplo de 8 (di
 
 Operador ``sizeof`` devolve a dimensão de uma variável ou de um tipo.
 A unidade de medida é a dimensão do tipo ``char``.
+
+.. _XXXX: https://en.cppreference.com/w/cpp/language/types.html#Data_models/
+
+sizeof(char) == 1 ≤ sizeof(short) ≤ sizeof(int) ≤ sizeof(long) ≤ sizeof(long long)
+
+.. table:: Dimensões dos tipos para números inteiros
+   :widths: auto
+   :align: center
+   :name: tipos_inteiros
+
+   +-------------------+---------+----------+-------+---------------------+---------------------+
+   | C                 | `LP64`_ | `ILP32`_ |  P16  |  Java               | Kotlin              |
+   +===================+=========+==========+=======+============+========+============+========+
+   | ``char``          | 8       | 8        | 8     | ``byte``   | 8      | ``Byte``   | 8      |
+   +-------------------+---------+----------+-------+---------------------+---------------------+
+   | ``short int``     | 16      | 16       | 16    | ``short``  | 16     | ``Short``  | 16     |
+   +-------------------+---------+----------+-------+---------------------+---------------------+
+   | ``int``           | 32      | 32       | 16    | ``int``    | 32     | ``Int``    | 32     |
+   +-------------------+---------+----------+-------+---------------------+---------------------+
+   | ``long int``      | 64      | 32       | 32    | ``long``   | 32     | ``Long``   | 32     |
+   +-------------------+---------+----------+-------+---------------------+---------------------+
+   | ``long long int`` | 64      | 64       |       |            |        |            |        |
+   +-------------------+---------+----------+-------+---------------------+---------------------+
+   | ``bool``          |         |          |       | ``boolean``|        | ``Boolean``|        |
+   +-------------------+---------+----------+-------+---------------------+---------------------+
+
+.. table:: Dimensões dos tipos para números reais
+   :widths: auto
+   :align: center
+   :name: tipos_inteiros
+
+.. _LP64: https://en.cppreference.com/w/cpp/language/types.html#Data_models
+.. _ILP32: https://en.cppreference.com/w/cpp/language/types.html#Data_models
+
+   +-------------------+------------+------------+--------+
+   | C                 |  Java      | Kotlin     |        |
+   +===================+============+============+========+
+   | ``float``         | ``float``  | ``Float``  | 32     |
+   +-------------------+------------+------------+--------+
+   | ``double``        | ``double`` | ``Double`` | 64     |
+   +-------------------+------------+------------+--------+
+   | ``long double``   |            |            | 128    |
+   +-------------------+------------+------------+--------+
+
+**Exemplo**
+
+O programa da :numref:`int_size` determina o número e bits de representação do tipo ``int``.
+A variável ``value`` é inicializada com todos os bits a um --
+o operador ``~`` na expressão ``~0`` inverte todos os bits com que o valor zero é representado.
+Em cada iteração do ``while`` o conteúdo de ``value`` é deslocado para a direita,
+sendo inserido um bit a zero na posição de maior peso.
+Ao fim de um número de iterações igual ao número de bits de um ``int``,
+a variável ``value`` toma o valor zero e o ``while`` termina.
+O número de iterações é acumulado na variável ``counter``, que reflete o número de bits de um ``int``. 
+
+.. literalinclude:: ../../../code/values_expressions/int/int_size.c
+   :language: c
+   :linenos:
+   :lines: 3-11
+   :caption: Determinar o número de bits de um ``int``
+   :name: int_size 
+
+**Exercício**
+
+Qual a consequência de se alterar a definição de ``value``, na linha 2 de :numref:`int_size`, para ``int value = ~0``?
 
 Limites
 -------
@@ -108,11 +172,11 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 +-------------------------------+------------------------------------------+
 | Dimensão                      | Limites                                  |  
 +===================+===========+================+=========================+
-| INT_WIDTH         |  16       | INT_MAX        | +32767                  |
+| INT_WIDTH         |  32       | INT_MAX        | +2147483647             |
 +-------------------+-----------+----------------+-------------------------+
-|                   |           | INT_MIN        | -32768                  |
+|                   |           | INT_MIN        | -2147483648             |
 +-------------------+-----------+----------------+-------------------------+
-| UINT_WIDTH        |  16       | UINT_MAX       | 65535                   |
+| UINT_WIDTH        |  32       | UINT_MAX       | 4294967295              |
 +-------------------+-----------+----------------+-------------------------+
 
 **long**
@@ -121,11 +185,11 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 +-------------------------------+------------------------------------------+
 | Dimensão                      | Limites                                  |  
 +===================+===========+================+=========================+
-| LONG_WIDTH        |  32       | LONG_MAX       | +2147483647             |
+| LONG_WIDTH        |  64       | LONG_MAX       | +9223372036854775807    |
 +-------------------+-----------+----------------+-------------------------+
-|                   |           | LONG_MIN       | -2147483648             |
+|                   |           | LONG_MIN       | -9223372036854775808    |
 +-------------------+-----------+----------------+-------------------------+
-| ULONG_WIDTH       |  32       | ULONG_MAX      | 4294967295              |
+| ULONG_WIDTH       |  64       | ULONG_MAX      | 18446744073709551615    |
 +-------------------+-----------+----------------+-------------------------+
 
 **long long**
@@ -141,33 +205,14 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 | ULLONG_WIDTH      |  64       | ULLONG_MAX     | 18446744073709551615    |
 +-------------------+-----------+----------------+-------------------------+
 
-.. table:: Implementações concretas dos tipos numéricos
-   :widths: auto
-   :align: center
-   :name: tipos_c
+O progama da :numref:`int_size_charbits` calcula o número de bits de um ``int`` baseado na constante ``CHAR_BIT``. 
 
-   +-------------------+--------+-------+-------+-------+---------------------+---------------------+
-   | C                 | x86-64 | ia-32 |  ARM  |  P16  |  Java               | Kotlin              |
-   +===================+========+=======+=======+=======+============+========+============+========+
-   | ``char``          | 8      | 8     | 8     | 8     | ``byte``   | 8      | ``Byte``   | 8      |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   | ``short int``     | 16     | 16    | 16    | 16    | ``short``  | 16     | ``Short``  | 16     |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   | ``int``           | 32     | 32    | 32    | 16    | ``int``    | 32     | ``Int``    | 32     |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   | ``long int``      | 64     | 32    | 32    | 32    | ``long``   | 32     | ``Long``   | 32     |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   | ``long long int`` | 64     | 64    | 64    |       |            |        |            |        |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   | ``float``         | 32     | 32    | 32    |       | ``float``  | 32     | ``Float``  | 32     |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   | ``double``        | 64     | 64    | 64    |       | ``double`` | 64     | ``Double`` | 64     |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   |                   |        |       |       |       | ``char``   | 16     | ``Char``   | 16     |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-   |                   |        |       |       |       | ``boolean``|        | ``Boolean``|        |
-   +-------------------+--------+-------+-------+-------+------------+--------+------------+--------+
-
+.. literalinclude:: ../../../code/values_expressions/int/charbits.c
+   :language: c
+   :linenos:
+   :lines: 2-
+   :caption: Imprimir o número de bits de um ``int``
+   :name: int_size_charbits 
 
 Portabilidade - stdint
 ----------------------
@@ -192,10 +237,33 @@ Possíveis definições de ``uint64_t`` para as arquiteturas IA-32 e X86-64 resp
 
 Alinhamento
 -----------
-O alinhamento impõe restrições aos endereços de memória onde um objeto pode ser alocado.
-É o número de *bytes* entre endereços sucessivos, onde o objeto pode ser alocado, a partir do endereço 0.
 
-Valores reais
+A generalidade das arquiteturas de computadores atuais define o seu espaço de memória
+como uma sequência de posições de memória em que cada posição contém um *byte*.
+As posições de memória são númeradas desde zero até à dimensão máxima menos um.
+Este número designa-se por endereço de memória. 
+
+O alinhamento impõe restrições aos endereços de memória onde um objeto pode ser alojado.
+
+O alinhamento é o número de posições de memória entre endereços sucessivos,
+onde um objeto pode ser alojado,
+a partir do endereço zero.
+
+Por exemplo, uma variável do tipo ``int``, cuja dimensão é quatro *bytes*, diz-se que tem alinhamento quatro.
+Só pode ser alojada em endereços múltiplos de quatro (0x0, 0x4, 0x8, 0xC, 0x10, 0x14, ...).
+
+Como os endereços não têm significado como quantidadades, costumam ser representados em notação hexadecimal.
+O que facilita a avaliação do alinhamento pelo valor do digito de menor peso.
+Por exemplo, um endereço tem alinhamento quatro se o dígito de menor peso do endereço for 0, 4, 8 ou C. 
+
+.. literalinclude:: ../../../code/values_expressions/int/address.c
+   :language: c
+   :linenos:
+   :lines: 3-9
+   :caption: Imprimir o endereço de variáveis
+   :name: address_var 
+
+Números reais
 =============
 
 Vírgula fixa
@@ -204,8 +272,8 @@ Vírgula fixa
 Os números reais podem ser representados em base binária
 usando as mesmas regras de significância posicional usadas em base decimal.
 
-Por exemplo, 23,625 representa em base decimal,
-o mesmo valor  que 10111,101 em base binária.
+Por exemplo, 23,625 representa em base decimal
+o mesmo valor que 10111,101 em base binária.
 
 Em base decimal as posições representadas valem respetivamente
 10 :sup:`1` (10), 10 :sup:`0` (1),  10 :sup:`-1` (0,1), 10 :sup:`-2` (0,01) e 10 :sup:`-3` (0,001),
@@ -452,12 +520,12 @@ Não pode existir um identificador igual em mais do que um enumerado.
 Modificadores **U** e **L** em constantes
 .........................................
 
-Por omissão uma constante é do tipo **int**.
-Os sufixos **U** e **L** modificam o tipo da constante para **unsigned** e **long**, respetivamente.
+Por omissão uma constante é do tipo ``int``.
+Os sufixos **U** e **L** modificam o tipo da constante para ``unsigned int`` e ``long int``, respetivamente.
 
-**3U** representa o valor três do tipo **unsigned int**).
+``3U`` representa o valor três do tipo ``unsigned int``.
 
-**3UL**  representa o valor três do tipo **unsigned long int**.
+``3UL``  representa o valor três do tipo ``unsigned long int``.
 
 (usar exemplos com afetações)
 
@@ -613,7 +681,6 @@ prioridade dos operadores, ordem de associação de operadores e ordem de avalia
       **+ -**                                  left to right    adição; subtração
       **<< >>**                                left to right    deslocamento dos bits
       **< <= > >=**                            left to right    relacionais
-      **+ -**                                  left to right    adição; subtração
       **== !=**                                left to right    igual; diferente
       **&**                                    left to right    e bit-a-bit
       **^**                                    left to right    ou exclusivo bit-a-bit

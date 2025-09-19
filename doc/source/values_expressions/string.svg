@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="7cm" height="2cm" viewBox="22 9 138 23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="7cm" height="2cm" viewBox="22 10 138 31" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Background"/>
   <g id="Background"/>
   <g id="Background"/>
   <g id="Background"/>
@@ -62,14 +63,38 @@
       <tspan x="142" y="28.175">33</tspan>
     </text>
     <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="148" y="20" width="12" height="12" rx="0" ry="0"/>
-    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="112" y="15.9125">
-      <tspan x="112" y="15.9125">8</tspan>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="154" y="16.3">
+      <tspan x="154" y="16.3">8</tspan>
     </text>
     <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="154" y="28.175">
       <tspan x="154" y="28.175">0</tspan>
     </text>
     <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:end;font-family:sans-serif;font-style:normal;font-weight:normal" x="48" y="26.175">
       <tspan x="48" y="26.175">greetings</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="58" y="38.2438">
+      <tspan x="58" y="38.2438">'B'</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="70" y="38.2438">
+      <tspan x="70" y="38.2438">'o'</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="82" y="38.2438">
+      <tspan x="82" y="38.2438">'m'</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="94" y="38.2438">
+      <tspan x="94" y="38.2438">'-'</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="106" y="38.2438">
+      <tspan x="106" y="38.2438">'d'</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="118" y="38.2438">
+      <tspan x="118" y="38.2438">'i'</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="130" y="38.2438">
+      <tspan x="130" y="38.2438">'a'</tspan>
+    </text>
+    <text font-size="5.64444" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="142" y="38.2438">
+      <tspan x="142" y="38.2438">'!'</tspan>
     </text>
   </g>
 </svg>

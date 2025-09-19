@@ -43,15 +43,16 @@ size_t real_to_string(unsigned long value, char buffer[], size_t buffer_size) {
 		if (i == DEC_FRAC - 1)
 			buffer[++i] = ',';
 	}
-	buffer[i--] = 0;
+	buffer[i] = 0;
+	size_t size = i;
 	/* inverter */
-	char *p, *q;
-	for (p = buffer, q = buffer + i; p < q; ++p, --q) {
-		char tmp = *p;
-		*p = *q;
-		*q = tmp;
+	int j;
+	for (j = 0, --i; j < i; ++j, --i) {
+		char tmp = buffer[i];
+		buffer[i] = buffer[j];
+		buffer[j] = tmp;
 	}
-	return i + 1;
+	return size;
 }
 
 void tests();

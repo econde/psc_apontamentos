@@ -8,16 +8,14 @@ Apontamentos de PSC
 
 .. warning::
 
-	Estes apontamentos estão a ser escritos em simultâneo com o decorrer das aulas de PSC 
-	(setembro 2024 -- dezembro 2024) e devem ser vistos como complemento, não como substituto.
-
+	Estes apontamentos estão a ser escritos e emendados em simultâneo com o decorrer das aulas de PSC.
 	Não são ainda um "produto acabado". Podem conter erros de diversa natureza.
 	Alertas para erros, comentários e sugestões são bem vindos em `ezequiel.conde[at]isel.pt`.
 
 .. note::
 
-   Ao longo destes apontamentos são utilizados excertos de código extraidos de um todo coerente.
-   Essas extrações são parciais com o objetivo de suportar a explicação de certos aspetos particulares.
+   Ao longo destes apontamentos são utilizados excertos de código extraidos de programas completos.
+   Esses extratos são utilizados como exemplos na explicação de aspetos particulares.
 
    O código integral pode ser acedido em https://github.com/econde/PSC_apontamentos.
 
