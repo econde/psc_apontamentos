@@ -686,19 +686,22 @@ quer na passagem de argumentos.
 *Red zone*
 ==========
 
-A *read zone* é área de *stack* além da posição indicada pelo registo SP (endereços inferiores, na arquitetura x86_64).
+A *read zone* é a área de *stack*, livre, além da posição indicada pelo registo SP (endereços inferiores, na arquitetura x86_64).
 Esta área tem a dimensão de 128 *bytes* e está resguardada de modificações por rotinas de atendimento de interrupções ou de excepções.
 Pode ser utilizada para armazenamento temporário de dados que não sejam necessários entre chamadas a funções.
 Nas funções folha pode ser utilizada para alojar toda a *stack frame* sem necessidade de ajustar do registo SP.
 
 **Exemplo**
 
-+---------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| .. literalinclude:: ../../../code/assembly_x86_64/stack_frame/mfd.c       | .. literalinclude:: ../../../code/assembly_x86_64/stack_frame/mfd_asm.s      |
-|    :language: c                                                           |    :language: asm                                                            |
-|    :caption: mfd.c                                                        |    :caption: mfd_asm.s                                                       |
-|                                                                           |    :linenos:                                                                 |
-+---------------------------------------------------------------------------+------------------------------------------------------------------------------+
+.. literalinclude:: ../../../code/assembly_x86_64/stack_frame/mfd.c
+   :language: c
+   :caption: mfd.c
+
+
+.. literalinclude:: ../../../code/assembly_x86_64/stack_frame/mfd_asm.s
+  :language: asm
+  :caption: mfd_asm.s
+  :linenos:
 
 *Buffer overflow*
 =================
@@ -776,6 +779,44 @@ a geração de código de mitigação de *stack clash*. ::
 
    -fstack-clash-protection
    -fno-stack-clash-protection
+
+
+Recomendações para escrita em *assembly*
+========================================
+
+Na escrita de programas em geral, usam-se convenções de formatação para facilitar
+a leitura do programa por parte do humano.
+Em seguida lista-se um conjunto de regras geralmente utilizadas na programação em linguagem *assembly*
+e que são aplicadas nos programas de exemplo.
+
+* O texto do programa é escrito em letra minúscula,
+  exceto os identificadores de constantes, que são escritos em letra maiúscula.
+
+* Nos identificadores formados por várias palavras
+  usa-se como separador o carácter ‘_’ (sublinhado).
+
+* O texto do programa é disposto na forma de uma tabela de quatro colunas.
+  Na primeira coluna insere-se apenas a *label*, se existir;
+  na segunda coluna a mnemónica da instrução ou a diretiva;
+  na terceira coluna os parâmetros da instrução ou da diretiva;
+  na quarta coluna os comentários até ao fim da linha
+  (começados por \';\' ou envolvidos por /\* \*/).
+
+* Cada linha contém apenas uma label, uma instrução ou uma diretiva.
+
+* Para definir as colunas deve usar-se o carácter TAB
+  configurado com a largura de oito espaços.
+
+* A terceira coluna ­-- a dos parâmetros ­-- pode ocupar mais que um espaçamento.
+
+* As linhas com *label* não devem conter nenhum outro elemento.
+  Isso permite usar *labels* compridas sem desalinhar a tabulação
+  e criar separações na sequência de instruções,
+  que ajudam na interpretação do programa.
+
+.. figure:: assembly_layout.svg
+   :align: center
+   :scale: 100%
 
 Referências
 ===========

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="15cm" height="10cm" viewBox="9 39 296 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs/>
+  <g id="Background"/>
+  <g id="Background"/>
+  <g id="Background"/>
+  <g id="Background"/>
+  <g id="Background">
+    <rect style="fill: #deddda; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.4; stroke: #000000" x="76" y="60" width="98" height="140" rx="0" ry="0"/>
+    <rect style="fill: #deddda; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.4; stroke: #000000" x="12" y="60" width="32" height="140" rx="0" ry="0"/>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="12" y="66.3">
+      <tspan xml:space="preserve" x="12" y="66.3">        .data</tspan>
+      <tspan x="12" y="74.7667">array_start:</tspan>
+      <tspan xml:space="preserve" x="12" y="83.2333">        .int    20, 30, 40, 55, 11, 23, 76, 99</tspan>
+      <tspan x="12" y="91.7">array_end:</tspan>
+      <tspan xml:space="preserve" x="12" y="100.167">        .equ    ARRAY_SIZE, array_end - array_start</tspan>
+      <tspan x="12" y="108.633"></tspan>
+      <tspan xml:space="preserve" x="12" y="117.1">        .text</tspan>
+      <tspan x="12" y="125.567">main:</tspan>
+      <tspan xml:space="preserve" x="12" y="134.033">        push    %ebp</tspan>
+      <tspan xml:space="preserve" x="12" y="142.5">        mov     %esp, %ebp</tspan>
+      <tspan xml:space="preserve" x="12" y="150.967">        sub     $8, %esp</tspan>
+      <tspan xml:space="preserve" x="12" y="159.433">        movl    $ARRAY_SIZE, 4(%esp)    # 2 parâmetro ­- dimensão</tspan>
+      <tspan xml:space="preserve" x="12" y="167.9">        movl    $array_start, (%esp)    # 1 parâmetro ­- inicio do array</tspan>
+      <tspan xml:space="preserve" x="12" y="176.367">        call    sort</tspan>
+      <tspan xml:space="preserve" x="12" y="184.833">        pop     %ebp</tspan>
+      <tspan xml:space="preserve" x="12" y="193.3">        ret</tspan>
+    </text>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 0.4; stroke: #000000" x="44" y="60" width="32" height="140" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 0.4; stroke: #000000" x="174" y="60" width="130" height="140" rx="0" ry="0"/>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="60" y="211.25">
+      <tspan x="60" y="211.25">2ª coluna</tspan>
+      <tspan x="60" y="219.717"></tspan>
+      <tspan x="60" y="228.183">instrução</tspan>
+      <tspan x="60" y="236.65">ou diretiva</tspan>
+    </text>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="128" y="211.25">
+      <tspan x="128" y="211.25">3ª coluna</tspan>
+      <tspan x="128" y="219.717"></tspan>
+      <tspan x="128" y="228.183">argumentos da instrução</tspan>
+      <tspan x="128" y="236.65">ou  da diretiva</tspan>
+    </text>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="240" y="211.481">
+      <tspan x="240" y="211.481">4ª coluna</tspan>
+      <tspan x="240" y="219.948"></tspan>
+      <tspan x="240" y="228.415">comentários</tspan>
+      <tspan x="240" y="236.881">até ao fim da linha</tspan>
+    </text>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x1="12" y1="50" x2="304" y2="50"/>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="16" y="46.625">
+      <tspan x="16" y="46.625">TAB = 8</tspan>
+    </text>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x1="12" y1="52" x2="12" y2="48"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x1="44" y1="52" x2="44" y2="48"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x1="76" y1="52" x2="76.118" y2="47.428"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x1="174" y1="52" x2="174" y2="48"/>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="54" y="46.625">
+      <tspan x="54" y="46.625">TAB</tspan>
+    </text>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="116" y="46.625">
+      <tspan x="116" y="46.625">n x TAB</tspan>
+    </text>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x1="304" y1="52" x2="304" y2="48"/>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="24" y="211.25">
+      <tspan x="24" y="211.25">1ª coluna</tspan>
+      <tspan x="24" y="219.717"></tspan>
+      <tspan x="24" y="228.183">label</tspan>
+    </text>
+  </g>
+</svg>
