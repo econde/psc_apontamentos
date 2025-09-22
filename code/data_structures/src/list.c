@@ -32,7 +32,7 @@ void list_destroy(struct list_node *list)
 }
 
 int list_insert_sort(struct list_node *list, void *data,
-				int (*compare)(const void*, const void*))
+				bool (*compare)(const void*, const void*))
 {
 	struct list_node *node;
 	for (node = list->next;

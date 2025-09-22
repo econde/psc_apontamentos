@@ -7,6 +7,4 @@ int x = 45;
 
 int main() {
 	calculate();
-	getchar();
-	return 0;
 }
