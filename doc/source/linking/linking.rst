@@ -180,8 +180,8 @@ nas secções ``.bss``, ``.data`` ou ``.rodata``, de acordo com certas proprieda
           static int o = 55;               .data 
       }
 
-Processo de compilação
-----------------------
+Processo de geração de programas
+--------------------------------
 
 Considere-se como exemplo um programa constituído pelos módulos: ``main.c`` e ``calculate.c``.
 
@@ -225,7 +225,13 @@ produzindo o respetivo ficheiro objeto relocalizável (com a extensão ``*.o``).
    :scale: 120
 
    Ilustração do processo de compilação e ligação
-   
+
+Em projetos reais são utilizadas ferramentas para controlar o processo de geração dos programas.
+A ferramenta *Make* é uma das mais utilizadas.
+Abaixo apresenta-se um ficheiro *makefile* para geração do programa executável tratado nesta secção.
+
+.. literalinclude:: ../../../code/linking/makefile
+
 Ficheiro objeto relocalizável
 -----------------------------
 
