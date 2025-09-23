@@ -8,7 +8,7 @@ Modelo de ficheiros
 -------------------
 
 Ao mais baixo nível, um ficheiro é uma sequência de valores numéricos representados a 8 *bit*
--- uma sequência de *bytes*. 
+-- é uma sequência de *bytes*.
 
 .. figure:: modelo_ficheiro3.svg
    :align: center
@@ -19,11 +19,12 @@ Quando esses valores numéricos são códigos de caracteres, diz-se que é um fi
 
 Um ficheiro de texto pode ser encarado como uma sequência de linhas de texto.
 Uma linha de texto é formada por uma sequência de caracteres terminada pela marcação de fim de linha.
-Esta marcação é representada na linguagem C por '\n'.
+Esta marcação é representada na linguagem C por ``'\n'``.
 
 .. figure:: modelo_ficheiro1.svg
    :align: center
 
+..	Mostrar aqui o conteúdo de um ficheiro com a ferramenta hexdump
 
 **Modelo de acesso a ficheiro**
 
@@ -56,7 +57,7 @@ Existem funções para modificar o indicador de posição de um ficheiro aberto.
 Os dispositivos físicos a considerar para suporte a ficheiros são:
 ecrã, teclado e ficheiros em disco.
 Este dispositivos são representados na linguagem C
-por variáveis do tipo ponteiro para FILE (*file descriptor*). 
+por variáveis do tipo ponteiro para FILE (*file descriptor*).
 
 Num programa em linguagem C, existem disponíveis três destas variáveis
 definidas na biblioteca normalizada, que representam o teclado e o ecrã. ::
@@ -132,19 +133,7 @@ A função ``fscanf`` aplica a conversão de texto indicada em ``format``
 à medida que lê os caracteres do dispositivo representado por ``stream``. ::
 
   int fscanf(FILE *stream, const char *format, ... );
-
-A função ``fgetc`` lê um carácter do dispositivo representado por ``stream``. ::
-
-   int fgetc(FILE *stream);
-
-As três funções seguintes equivalem às anteriores com ``stdin`` como argumento no parâmetro ``stream``. 
-(A função ``gets`` foi retirada da biblioteca normalizada
-por segurança, devido não se poder controlar a escita na memória indicada por ``s``.) ::
-
-   char *gets(char *s);
-   int scanf(const char *format, ...);
-   int getchar();
-
+  
 Especificações de conversão das funções da família  **scanf**: ::
 
 %*<width><lenght><conversion>
@@ -155,6 +144,36 @@ width        dimensão máxima do campo
 length       **h** short, **l** long, **L** long double
 conversion   b, d, i, o, x, u, c, s, a, f, e, g
 ============ =============================================
+
+A função ``fgetc`` lê um carácter do dispositivo representado por ``stream``. ::
+
+   int fgetc(FILE *stream);
+
+As três funções seguintes equivalem às anteriores com ``stdin`` como argumento no parâmetro ``stream``.
+(A função ``gets`` foi retirada da biblioteca normalizada
+por segurança, devido não se poder controlar a escita na memória indicada por ``s``.) ::
+
+   char *gets(char *s);
+   int scanf(const char *format, ...);
+   int getchar();
+
+**Exemplo**
+
+A função ``read_word`` utiliza a função ``fgetc`` para obter os sucessivos caracteres do ficheiro.
+A função tem um primeiro estado em que ignora todos os caracteres delimitadores
+e um segundo estado em que recolhe todos os caracteres até ao próximo delimitador.
+
+Durante os dois estados verifica a terminação do ficheiro, caso em que interrompe o processamento e retorna -1.
+No segundo estado verifica também a dimensão de memória disponível para armazaneamento dos caracteres.
+Se esgotar, retorna -2. 
+Em qualquer dos casos retorna sempre uma *string* válida.
+
+.. literalinclude:: ../../../code/input_output/read_word.c
+   :language: c
+   :linenos:
+   :lines: 4-
+   :caption: Ler uma palavra de um ficheiro de texto
+
 
 Redirecionamento
 ----------------
@@ -215,7 +234,7 @@ A função ``remove`` serve para eliminar um ficheiro. ::
    int remove(const char *filename);
 
 A função ``rename`` permite alterar o nome de um ficheiro. ::
-   
+
    int rename(const char *oldname, const char *newname);
 
 A função ``tmpfile`` cria um ficheiro temporário anónimo.
@@ -321,13 +340,13 @@ Programa para mostrar no terminal o conteúdo de um ficheiro em hexadecimal
 .. literalinclude:: ../../../code/input_output/hexdump.c
    :language: c
    :linenos:
-   
+
 Exercícios
 ----------
    1. Fazer uma programa para copiar ficheiros. Primeira versão - caractere a caractere; segunda versão - bloco a bloco.
    2. Fazer um programa para concatenar ficheiros.
    3. Fazer um programa para ordenar um ficheiro de texto pela ordem alfabética da linhas.
-    
+
 Referências
 -----------
 

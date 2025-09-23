@@ -12,11 +12,11 @@ Modificadores de sinal -- ``signed``, ``unsigned``
 
 **Combinações válidas**
 
-*character types* -- ``char``, ``char``, ``signed char``, ``unsigned char`` 
+*character types* -- ``char``, ``char``, ``signed char``, ``unsigned char``
 
-*signed integer types* -- ``signed char``, ``short int``, ``int``, ``long int``, ``long long int`` 
+*signed integer types* -- ``signed char``, ``short int``, ``int``, ``long int``, ``long long int``
 
-*unsigned integer types* -- `bool``, ``unsigned char``, ``unsigned short int``, ``unsigned int``, ``unsigned long int``, ``unsigned long long int`` 
+*unsigned integer types* -- `bool``, ``unsigned char``, ``unsigned short int``, ``unsigned int``, ``unsigned long int``, ``unsigned long long int``
 
 *floating types* -- ``float``, ``double``, ``long double``
 
@@ -63,31 +63,29 @@ sizeof(char) == 1 ≤ sizeof(short) ≤ sizeof(int) ≤ sizeof(long) ≤ sizeof(
 .. table:: Dimensões dos tipos para números inteiros
    :widths: auto
    :align: center
-   :name: tipos_inteiros
 
    +-------------------+---------+----------+-------+---------------------+---------------------+
    | C                 | `LP64`_ | `ILP32`_ |  P16  |  Java               | Kotlin              |
    +===================+=========+==========+=======+============+========+============+========+
    | ``char``          | 8       | 8        | 8     | ``byte``   | 8      | ``Byte``   | 8      |
-   +-------------------+---------+----------+-------+---------------------+---------------------+
+   +-------------------+---------+----------+-------+------------+--------+------------+--------+
    | ``short int``     | 16      | 16       | 16    | ``short``  | 16     | ``Short``  | 16     |
-   +-------------------+---------+----------+-------+---------------------+---------------------+
+   +-------------------+---------+----------+-------+------------+--------+------------+--------+
    | ``int``           | 32      | 32       | 16    | ``int``    | 32     | ``Int``    | 32     |
-   +-------------------+---------+----------+-------+---------------------+---------------------+
+   +-------------------+---------+----------+-------+------------+--------+------------+--------+
    | ``long int``      | 64      | 32       | 32    | ``long``   | 32     | ``Long``   | 32     |
-   +-------------------+---------+----------+-------+---------------------+---------------------+
+   +-------------------+---------+----------+-------+------------+--------+------------+--------+
    | ``long long int`` | 64      | 64       |       |            |        |            |        |
-   +-------------------+---------+----------+-------+---------------------+---------------------+
+   +-------------------+---------+----------+-------+------------+--------+------------+--------+
    | ``bool``          |         |          |       | ``boolean``|        | ``Boolean``|        |
-   +-------------------+---------+----------+-------+---------------------+---------------------+
+   +-------------------+---------+----------+-------+------------+--------+------------+--------+
+
+.. _LP64: https://en.cppreference.com/w/cpp/language/types.html#Data_models
+.. _ILP32: https://en.cppreference.com/w/cpp/language/types.html#Data_models
 
 .. table:: Dimensões dos tipos para números reais
    :widths: auto
    :align: center
-   :name: tipos_inteiros
-
-.. _LP64: https://en.cppreference.com/w/cpp/language/types.html#Data_models
-.. _ILP32: https://en.cppreference.com/w/cpp/language/types.html#Data_models
 
    +-------------------+------------+------------+--------+
    | C                 |  Java      | Kotlin     |        |
@@ -108,18 +106,20 @@ Em cada iteração do ``while`` o conteúdo de ``value`` é deslocado para a dir
 sendo inserido um bit a zero na posição de maior peso.
 Ao fim de um número de iterações igual ao número de bits de um ``int``,
 a variável ``value`` toma o valor zero e o ``while`` termina.
-O número de iterações é acumulado na variável ``counter``, que reflete o número de bits de um ``int``. 
+O número de iterações é acumulado na variável ``counter``, que reflete o número de bits de um ``int``.
 
 .. literalinclude:: ../../../code/values_expressions/int/int_size.c
    :language: c
    :linenos:
    :lines: 3-11
    :caption: Determinar o número de bits de um ``int``
-   :name: int_size 
+   :name: int_size
 
-**Exercício**
+**Exercícios**
 
-Qual a consequência de se alterar a definição de ``value``, na linha 2 de :numref:`int_size`, para ``int value = ~0``?
+   1. Qual a consequência de se alterar a definição de ``value``, na linha 2 de :numref:`int_size`, para ``int value = ~0``?
+
+   2. Indique uma maneira diferente de inicializar a variável ``value`` com todos os bits a um.
 
 Limites
 -------
@@ -138,9 +138,9 @@ O compilador GCC, assim como a generalidade dos compiladores,
 assume que o tipo **char** representa valores no conjunto dos números relativos (*signed values*).
 
 +-------------------------------+------------------------------------------+
-| Dimensão                      | Limites                                  |  
+| Dimensão                      | Limites                                  |
 +===================+===========+================+=========================+
-| CHAR_BIT          |         8 |                |                         |  
+| CHAR_BIT          |         8 |                |                         |
 +-------------------+-----------+----------------+-------------------------+
 | SCHAR_WIDTH       |  CHAR_BIT | SCHAR_MAX      | +127                    |
 +-------------------+-----------+----------------+-------------------------+
@@ -157,7 +157,7 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 .........
 
 +-------------------------------+------------------------------------------+
-| Dimensão                      | Limites                                  |  
+| Dimensão                      | Limites                                  |
 +===================+===========+================+=========================+
 | SHRT_WIDTH        |  16       | SHRT_MAX       | +32767                  |
 +-------------------+-----------+----------------+-------------------------+
@@ -170,7 +170,7 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 .......
 
 +-------------------------------+------------------------------------------+
-| Dimensão                      | Limites                                  |  
+| Dimensão                      | Limites                                  |
 +===================+===========+================+=========================+
 | INT_WIDTH         |  32       | INT_MAX        | +2147483647             |
 +-------------------+-----------+----------------+-------------------------+
@@ -183,7 +183,7 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 ........
 
 +-------------------------------+------------------------------------------+
-| Dimensão                      | Limites                                  |  
+| Dimensão                      | Limites                                  |
 +===================+===========+================+=========================+
 | LONG_WIDTH        |  64       | LONG_MAX       | +9223372036854775807    |
 +-------------------+-----------+----------------+-------------------------+
@@ -196,7 +196,7 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 .............
 
 +-------------------------------+------------------------------------------+
-| Dimensão                      | Limites                                  |  
+| Dimensão                      | Limites                                  |
 +===================+===========+================+=========================+
 | LLONG_WIDTH       |  64       | LLONG_MAX      | +9223372036854775807    |
 +-------------------+-----------+----------------+-------------------------+
@@ -205,14 +205,32 @@ assume que o tipo **char** representa valores no conjunto dos números relativos
 | ULLONG_WIDTH      |  64       | ULLONG_MAX     | 18446744073709551615    |
 +-------------------+-----------+----------------+-------------------------+
 
-O progama da :numref:`int_size_charbits` calcula o número de bits de um ``int`` baseado na constante ``CHAR_BIT``. 
+**Exemplos**
+
+O progama da :numref:`int_size_charbits` calcula o número de bits de um ``int`` baseado na constante ``CHAR_BIT``.
 
 .. literalinclude:: ../../../code/values_expressions/int/charbits.c
    :language: c
    :linenos:
    :lines: 2-
    :caption: Imprimir o número de bits de um ``int``
-   :name: int_size_charbits 
+   :name: int_size_charbits
+
+O progama da :numref:`print_int` mostra no terminal
+a representação de um número inteiro em binário e em decimal.
+
+.. literalinclude:: ../../../code/values_expressions/int/print_int.c
+   :language: c
+   :linenos:
+   :lines: 4-26
+   :caption: Visualizar o conteúdo de uma variável em binário e em decimal
+   :name: print_int
+
+**Exercício**
+
+Realize um programa que leia do terminal com ``getchar()``, uma sequência de
+carateres numéricos, representando um número decimal,
+e afete uma variável do tipo ``int`` com esse valor.
 
 Portabilidade - stdint
 ----------------------
@@ -228,7 +246,7 @@ Uma forma de garantir a mesma dimensão para os tipos básicos em sistemas difer
 | uint8_t | uint16_t | uint32_t | uint64_t |
 +---------+----------+----------+----------+
 
-Possíveis definições de ``uint64_t`` para as arquiteturas IA-32 e X86-64 respetivamente:
+Possíveis definições de ``uint64_t`` para as arquiteturas IA-32 e X86-64, respetivamente:
 
 .. code-block:: c
 
@@ -241,7 +259,7 @@ Alinhamento
 A generalidade das arquiteturas de computadores atuais define o seu espaço de memória
 como uma sequência de posições de memória em que cada posição contém um *byte*.
 As posições de memória são númeradas desde zero até à dimensão máxima menos um.
-Este número designa-se por endereço de memória. 
+Este número designa-se por endereço de memória.
 
 O alinhamento impõe restrições aos endereços de memória onde um objeto pode ser alojado.
 
@@ -254,185 +272,15 @@ Só pode ser alojada em endereços múltiplos de quatro (0x0, 0x4, 0x8, 0xC, 0x1
 
 Como os endereços não têm significado como quantidadades, costumam ser representados em notação hexadecimal.
 O que facilita a avaliação do alinhamento pelo valor do digito de menor peso.
-Por exemplo, um endereço tem alinhamento quatro se o dígito de menor peso do endereço for 0, 4, 8 ou C. 
+Por exemplo, um endereço tem alinhamento quatro se o dígito de menor peso do endereço for 0, 4, 8 ou C.
 
 .. literalinclude:: ../../../code/values_expressions/int/address.c
    :language: c
    :linenos:
    :lines: 3-9
    :caption: Imprimir o endereço de variáveis
-   :name: address_var 
+   :name: address_var
 
-Números reais
-=============
-
-Vírgula fixa
-----------------------
-
-Os números reais podem ser representados em base binária
-usando as mesmas regras de significância posicional usadas em base decimal.
-
-Por exemplo, 23,625 representa em base decimal
-o mesmo valor que 10111,101 em base binária.
-
-Em base decimal as posições representadas valem respetivamente
-10 :sup:`1` (10), 10 :sup:`0` (1),  10 :sup:`-1` (0,1), 10 :sup:`-2` (0,01) e 10 :sup:`-3` (0,001),
-o valor representado (23,625) resulta da adição de duas dezenas, mais três unidades,
-mais seis décimas, mais duas centésimas e mais cinco milésimas.
-
-Em base binária as posições representadas valem respetivamente
-2 :sup:`4` (16), 2 :sup:`3` (8), 2 :sup:`2` (4), 2 :sup:`1` (2), 2 :sup:`0` (1),
-2 :sup:`-1` (0,5), 2 :sup:`-2` (0,25) e 2 :sup:`-3` (0,125),
-o valor representado (10111,101) resulta da adição de dezasseis,
-mais quatro, mais dois, mais um, mais 0,5 e mais 0,125.
-
-.. figure:: real.png
-   :align: center
-   :scale: 22%
-   :name: real_fixed
-   
-   Representação de número real em virgula fixa
-   
-**Exemplo**
-
-Função para converter uma *string*, representando um valor real em base decimal,
-para representação em binário sobre uma variável do tipo ``unsigned long int``.
-Na representação binária assumir a posição ``BIN_FRAC`` como a posição de peso unitário.
-Relativamente à :numref:`real_fixed` seria a posição 5.
-
-.. literalinclude:: ../../../code/values_expressions/float/calc_fixed.c
-   :language: c
-   :linenos:
-   :lines: 13-27
-   :caption: Conversão de texto para representação em virgula fixa
-   
-   
-**Exemplo**
-
-Função para converter a representação de um número real em binário com virgula na posição ``BIN_FRAC``
-para uma representação em texto, na base decimal com ``DEC_FRAC`` casas decimais.
-
-.. literalinclude:: ../../../code/values_expressions/float/calc_fixed.c
-   :language: c
-   :linenos:
-   :lines: 29,35-55
-   :caption: Conversão de representação em virgula fixa para texto
-
-**Exercício**
-
-Completar o esboço de programa apresentado abaixo
-que realiza as quatro operações aritméticas básicas
-sobre números reais representados em binário com ``BIN_FRAC`` casas fracionárias.
-
-.. literalinclude:: ../../../code/values_expressions/float/calc_fixed.c
-   :language: c
-   :linenos:
-   :lines: 59,69-76,78-79,82-83,86-87,89-92
-   :caption: Operações aritméticas em vírgula fixa
-
-
-Vírgula flutuante (IEEE 754)
-----------------------------
-
-.. figure:: float.svg
-   :align: center
-   :scale: 120%
-
-   Representação de número real em virgula flutuante (formato IEEE754)
-
-Os *bits* das posições 22 a 0 valem, respetivamente, os valores :math:`2^{-1}` a :math:`2^{-23}`.
-
-.. figure:: float2.svg
-   :align: center
-   :scale: 120%
-
-   Visualização de número real em virgula flutuante (formato IEEE754)
-
-
-+-------+-------------+----------+----------------------------------------------------+
-| Sinal | Expoente    | Mantissa | Valor                                              |
-+-------+-------------+----------+----------------------------------------------------+
-| s     | 0 < e < 255 | m        | :math:`(-1)^s * 2^{e-127} * (1 + m)` (normalized)  |
-+-------+-------------+----------+----------------------------------------------------+
-| s     | 0           | m != 0   | :math:`(-1)^s * 2^{-126} * (1 + m)` (unnormalized) |
-+-------+-------------+----------+----------------------------------------------------+
-| 0     | 0           | 0        | zero                                               |
-+-------+-------------+----------+----------------------------------------------------+
-| 1     | 0           | 0        | -zero                                              |
-+-------+-------------+----------+----------------------------------------------------+
-| s     | 255         | m != 0   | NaN (Not a Number)                                 |
-+-------+-------------+----------+----------------------------------------------------+
-| 0     | 255         | 0        | +infinito                                          |
-+-------+-------------+----------+----------------------------------------------------+
-| 1     | 255         | 0        | -infinito                                          |
-+-------+-------------+----------+----------------------------------------------------+
-
-**Exemplo**
-
-**1 10000101 11011010100000000000000**
-
-s :math:`= -1` e :math:`= 133` m :math:`= 0b11011010100000000000000`
-
-Mantissa :math:`= 2^{-1} + 2^{-2} + 2^{-4} + 2^{-5} + 2^{-7} + 2^{-9}`
-:math:`= 0,5 + 0,25 + 0,0625 + 0,03125 + 0,0078125 + 0,001953125 = 0,853515625`
-
-Valor representado :math:`= (-1)^1 * 2^{133-127} * 1,853515625 = -118,625`
-
-.. figure:: float3.svg
-   :align: center
-   :scale: 120%
-
-   Visualização da representação de 118,625 em base binária
-
-**Exemplo**
-
-Programa que imprime no terminal o conteúdo binário de um valor do tipo **float**.
-
-.. literalinclude:: ../../../code/values_expressions/float/float_print_bin.c
-   :language: c
-   :linenos:
-   :lines: 4-22
-
-
-**Exercícios**
-
-   1. Fazer um programa que leia um valor real do terminal e imprima a respetiva representação binária.
-      Verificar que a codificação do valor 16777217,0 é igual à do valor 16777216,0. Porquê?
- 
-   2. Fazer um programa que verifique se a parte inteira de um valor do tipo **float** é representável numa variável do tipo **int**.
-
-**Limites**
-
-Maior magnitude codificável: 0 11111110 111 1111 1111 1111 1111 1111
-
-:math:`2^{254-127} * (1,11111111111111111111111)_2`
-
-::
-
-   #define FLT_MAX 3.40282346638528859811704183484516925e+38F
-
-Menor magnitude codificável: 0 00000001 000 0000 0000 0000 0000 0000
-
-:math:`2^{1-127} * (1,00000000000000000000000)_2`
-
-::
-
-   #define FLT_MIN 1.17549435082228750796873653722224568e-38F
-
-Maior magnitude codificável sem erro:
-
-:math:`2^{150-127} * (1,11111111111111111111111)_2`
-
-Valor 16777215.
-
-**Sempre que a mantissa (ou significante)
-tenha um afastamento entre dígitos significativos maior que 23 posições,
-há erro na codificação do float**.
-
-.. figure:: pesos-crop.svg
-   :align: center
-
-   Pesos na base de numeração binária
 
 Valores e variáveis
 ===================
@@ -488,7 +336,7 @@ As macros são um mecanismo de substituição textual, que ocorre antes da compi
 Além da definição de constantes, podem também ser utilizadas para outros fins.
 No exemplo, todas as ocorrências de **TEN** no texto do programa,
 serão substituídas por 10.
-A utilização de macros é uma forma muito comum de se definirem valores constantes em linguagem C.
+A utilização de macros é uma forma muito comum de se definir valores constantes em linguagem C.
 
 A definição prefixada com **const** significa em Kotlin,
 que o valor é determinado em compilação.
@@ -527,8 +375,6 @@ Os sufixos **U** e **L** modificam o tipo da constante para ``unsigned int`` e `
 
 ``3UL``  representa o valor três do tipo ``unsigned long int``.
 
-(usar exemplos com afetações)
-
 .. code-block:: c
 
    long d = 1L << 31;		/* resulta o valor 2147483648 */
@@ -537,6 +383,10 @@ Os sufixos **U** e **L** modificam o tipo da constante para ``unsigned int`` e `
    int f = (1  << 31) >> 31;	/* resulta o valor -1 */
    int g = (1U << 31) >> 31;	/* resulta o valor 1 */
 
+
+**Exercício**
+
+Realizar um programa que permita verificar os valores das expressões indicadas acima.
 
 **Convenções**
 
@@ -601,10 +451,10 @@ ou recebe zero se estiver a operar sobre um tipo sem sinal.
 Exemplos:
 
    ======================= ======================================================================
-   ``b = a << p``          Deslocar um valor para a esquerda **p** posições                      
-   ``b = a & ~(1 << p);``  Colocar **0** no *bit* da posição **p**                               
-   ``b = a | 1 << p``      Colocar **1** no *bit* da posição **p**                               
-   ``b = a & (1 << p))``   Isolar o *bit* da posição **p**                                       
+   ``b = a << p``          Deslocar um valor para a esquerda **p** posições
+   ``b = a & ~(1 << p);``  Colocar **0** no *bit* da posição **p**
+   ``b = a | 1 << p``      Colocar **1** no *bit* da posição **p**
+   ``b = a & (1 << p))``   Isolar o *bit* da posição **p**
    ``b = ~(~0 << n) << p`` Formar uma sequência de **n** *bits* a **1** a partir da posição **p**
    ======================= ======================================================================
 
@@ -669,14 +519,14 @@ prioridade dos operadores, ordem de associação de operadores e ordem de avalia
 
    .. table:: Réplica da tabela 2.1 *Precedence and Associativity of Operators* [#f1]_
       :widths: auto
-   
+
       ======================================== ================ =====================================
-      Operadores                               Associatividade  Operação                             
+      Operadores                               Associatividade  Operação
       ======================================== ================ =====================================
       **( ) [ ] -> .**                         left to right    função; indexação; campo de estrutura
-      **! ~ ++ -- + - \* & (*type*) sizeof**   right to left    falso; negar *bit-a-bit*; incrementar; decrementar;            
-                                                                positivo; negativo; desreferenciar; endereço de;          
-                                                                forçar o tipo; dimensão              
+      **! ~ ++ -- + - \* & (*type*) sizeof**   right to left    falso; negar *bit-a-bit*; incrementar; decrementar;
+                                                                positivo; negativo; desreferenciar; endereço de;
+                                                                forçar o tipo; dimensão
       **\* / %**                               left to right    multiplicação; divisão; resto da divisão
       **+ -**                                  left to right    adição; subtração
       **<< >>**                                left to right    deslocamento dos bits
@@ -688,7 +538,7 @@ prioridade dos operadores, ordem de associação de operadores e ordem de avalia
       **&&**                                   left to right    e
       **||**                                   left to right    ou
       **? :**                                  left to right    expressão condicional
-      **= += -= *= /= %= &= |= ^= <<= >>=**    right to left    afetação e afetação com operação                                                      
+      **= += -= *= /= %= &= |= ^= <<= >>=**    right to left    afetação e afetação com operação
       **,**                                    left to right    operador vírgula
       ======================================== ================ =====================================
 
@@ -718,7 +568,7 @@ f1() + f2() + f3() (a ordem de associação não define a ordem de avaliação)
 Ordem de avaliação
 ------------------
 
-A ordem de avaliação dos operandos só está definida para os operadores **&&** **||** **?:** **,**. 
+A ordem de avaliação dos operandos só está definida para os operadores **&&** **||** **?:** **,**.
 
 Nas operações **&&** e **||** aplica-se o critério *lazy evaluation*.
 
@@ -887,7 +737,7 @@ A especificação de caracteres literais, incluindo as sequências de escape:
 ========================= ================================ ===========================
 ``\a`` alerta             ``\b`` retroceder (*backspace*)  ``\f`` avanço de página
 ``\n`` nova linha         ``\r`` coloca cursor na coluna 0 ``\t`` tabulador horizontal
-``\v`` tabulador vertical ``\\`` o próprio \\               ``\'`` plica 
+``\v`` tabulador vertical ``\\`` o próprio \\               ``\'`` plica
 ``\"`` aspas
 ========================= ================================ ===========================
 
@@ -920,13 +770,208 @@ com nove posições e a seguinte ocupação:
 Utilizando o operador indexação sobre este *array* poderemos obter ou modificar os valores
 numéricos de cada posição. ``greeting[0]`` corresponde ao valor numérico 66 que representa a letra 'B';
 ``greeting[7]`` dá acesso ao valor numérico 33 que é o código numérico do ponto de exclamação.
- 
+
 Exemplos de definição de *strings* em C: ::
 
    char string1[] = "string terminada com mudança de linha\n";
 
    char string2[] = "uma string dividida"
                     "em duas linhas";
+
+**Exemplos**
+
+O progama da :numref:`print_int_string` forma *strings* com
+a representação de números inteiros em binário e em decimal.
+
+.. literalinclude:: ../../../code/values_expressions/int/print_int_string.c
+   :language: c
+   :linenos:
+   :lines: 4-30
+   :caption: Representar um valor inteiro em *string* nas bases binária e decimal
+   :name: print_int_string
+
+**Exercício**
+
+Modifique o código da função ``int_to_string_decimal`` da :numref:`print_int_string`
+de modo a contemplar a possibilidade de o valor ser zero ou negativo
+e também verificar se a capacidade do *array* ``buffer`` é suficiente.
+
+Realize uma função que recebendo *strings* representando um valor binário,
+retorne o valor numérico representado na string (``int string_binary_to_int(char string[])``).
+
+Números reais
+=============
+
+Vírgula fixa
+----------------------
+
+Os números reais podem ser representados em base binária
+usando as mesmas regras de significância posicional usadas em base decimal.
+
+Por exemplo, 23,625 representa em base decimal
+o mesmo valor que 10111,101 em base binária.
+
+Em base decimal as posições representadas valem, respetivamente,
+10 :sup:`1` (10), 10 :sup:`0` (1),  10 :sup:`-1` (0,1), 10 :sup:`-2` (0,01) e 10 :sup:`-3` (0,001),
+o valor representado (23,625) resulta da adição de duas dezenas, mais três unidades,
+mais seis décimas, mais duas centésimas e mais cinco milésimas.
+
+Em base binária as posições representadas valem, respetivamente,
+2 :sup:`4` (16), 2 :sup:`3` (8), 2 :sup:`2` (4), 2 :sup:`1` (2), 2 :sup:`0` (1),
+2 :sup:`-1` (0,5), 2 :sup:`-2` (0,25) e 2 :sup:`-3` (0,125),
+o valor representado (10111,101) resulta da adição de dezasseis,
+mais quatro, mais dois, mais um, mais 0,5 e mais 0,125.
+
+.. figure:: real.png
+   :align: center
+   :scale: 22%
+   :name: real_fixed
+
+   Representação de número real em virgula fixa
+
+**Exemplo**
+
+Função para converter uma *string*, representando um valor real em base decimal,
+para representação em binário sobre uma variável do tipo ``unsigned long int``.
+Na representação binária assumir a posição ``BIN_FRAC`` como a posição de peso unitário.
+Relativamente à :numref:`real_fixed` seria a posição 5.
+
+.. literalinclude:: ../../../code/values_expressions/float/calc_fixed.c
+   :language: c
+   :linenos:
+   :lines: 13-27
+   :caption: Conversão de texto para representação em virgula fixa
+
+
+**Exemplo**
+
+Função para converter a representação de um número real em binário com virgula na posição ``BIN_FRAC``
+para uma representação em texto, na base decimal com ``DEC_FRAC`` casas decimais.
+
+.. literalinclude:: ../../../code/values_expressions/float/calc_fixed.c
+   :language: c
+   :linenos:
+   :lines: 29,35-55
+   :caption: Conversão de representação em virgula fixa para texto
+
+**Exercício**
+
+Completar o esboço de programa apresentado abaixo
+que realiza as quatro operações aritméticas básicas
+sobre números reais representados em binário com ``BIN_FRAC`` casas fracionárias.
+
+.. literalinclude:: ../../../code/values_expressions/float/calc_fixed.c
+   :language: c
+   :linenos:
+   :lines: 60,70-77,79-80,83-84,87-88,90-93
+   :caption: Operações aritméticas em vírgula fixa
+
+
+Vírgula flutuante (IEEE 754)
+----------------------------
+
+.. figure:: float.svg
+   :align: center
+   :scale: 120%
+
+   Representação de número real em virgula flutuante (formato IEEE754)
+
+Os *bits* das posições 22 a 0 valem, respetivamente, os valores :math:`2^{-1}` a :math:`2^{-23}`.
+
+.. figure:: float2.svg
+   :align: center
+   :scale: 120%
+
+   Visualização de número real em virgula flutuante (formato IEEE754)
+
+
++-------+-------------+----------+----------------------------------------------------+
+| Sinal | Expoente    | Mantissa | Valor                                              |
++-------+-------------+----------+----------------------------------------------------+
+| s     | 0 < e < 255 | m        | :math:`(-1)^s * 2^{e-127} * (1 + m)` (normalized)  |
++-------+-------------+----------+----------------------------------------------------+
+| s     | 0           | m != 0   | :math:`(-1)^s * 2^{-126} * (1 + m)` (unnormalized) |
++-------+-------------+----------+----------------------------------------------------+
+| 0     | 0           | 0        | zero                                               |
++-------+-------------+----------+----------------------------------------------------+
+| 1     | 0           | 0        | -zero                                              |
++-------+-------------+----------+----------------------------------------------------+
+| s     | 255         | m != 0   | NaN (Not a Number)                                 |
++-------+-------------+----------+----------------------------------------------------+
+| 0     | 255         | 0        | +infinito                                          |
++-------+-------------+----------+----------------------------------------------------+
+| 1     | 255         | 0        | -infinito                                          |
++-------+-------------+----------+----------------------------------------------------+
+
+**Exemplo**
+
+**1 10000101 11011010100000000000000**
+
+s :math:`= -1` e :math:`= 133` m :math:`= 0b11011010100000000000000`
+
+Mantissa :math:`= 2^{-1} + 2^{-2} + 2^{-4} + 2^{-5} + 2^{-7} + 2^{-9}`
+:math:`= 0,5 + 0,25 + 0,0625 + 0,03125 + 0,0078125 + 0,001953125 = 0,853515625`
+
+Valor representado :math:`= (-1)^1 * 2^{133-127} * 1,853515625 = -118,625`
+
+.. figure:: float3.svg
+   :align: center
+   :scale: 120%
+
+   Visualização da representação de 118,625 em base binária
+
+**Exemplo**
+
+O programa da :numref:`float_print_bin` imprime no terminal a representação binária de um valor do tipo **float**.
+
+.. literalinclude:: ../../../code/values_expressions/float/float_print_bin.c
+   :language: c
+   :linenos:
+   :lines: 4-
+   :caption: Visualização da representação binária de um float
+   :name: float_print_bin
+
+
+**Exercícios**
+
+   1. Fazer um programa que leia um valor real do terminal e imprima a respetiva representação binária.
+      Verificar que a codificação do valor 16777217,0 é igual à do valor 16777216,0. Porquê?
+
+   2. Fazer um programa que verifique se a parte inteira de um valor do tipo **float** é representável numa variável do tipo **int**.
+
+**Limites**
+
+Maior magnitude codificável: 0 11111110 111 1111 1111 1111 1111 1111
+
+:math:`2^{254-127} * (1,11111111111111111111111)_2`
+
+::
+
+   #define FLT_MAX 3.40282346638528859811704183484516925e+38F
+
+Menor magnitude codificável: 0 00000001 000 0000 0000 0000 0000 0000
+
+:math:`2^{1-127} * (1,00000000000000000000000)_2`
+
+::
+
+   #define FLT_MIN 1.17549435082228750796873653722224568e-38F
+
+Maior magnitude codificável sem erro:
+
+:math:`2^{150-127} * (1,11111111111111111111111)_2`
+
+Valor 16777215.
+
+**Sempre que a mantissa (ou significante)
+tenha um afastamento entre dígitos significativos maior que 23 posições,
+há erro na codificação do float**.
+
+.. figure:: pesos-crop.svg
+   :align: center
+
+   Pesos na base de numeração binária
+
 
 Referências
 ===========
