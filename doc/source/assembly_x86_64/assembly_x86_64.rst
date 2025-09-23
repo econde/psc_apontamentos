@@ -1,6 +1,11 @@
 Programação em *assembly* x86-64
 ********************************
 
+.. Inserir aqui uma secção com os aspetos arquiturais importantes.
+   Copiar algumas coisas dos slides
+
+.. Tratar da questão do alinhamento. Tirar do capítulo dos valores e pôr aqui.
+
 Suporte à linguagem C
 =====================
 
@@ -24,8 +29,8 @@ num número inferior de *bits* para um número superior de *bits*.
 
 +-----------------------+-------------------------------+-----------------------------------------------------------------+
 | movs\-\- *src*, *dst* | extensão com o *bit* de sinal | os tracinhos são substituídos pelos indicadores acima           |
-+-----------------------+-------------------------------+                                                                 | 
-| movz\-\- *src*, *dst* | extensão com o valor zero     | o primeiro indica a dimensão da origem e o segundo a do destino | 
++-----------------------+-------------------------------+                                                                 |
+| movz\-\- *src*, *dst* | extensão com o valor zero     | o primeiro indica a dimensão da origem e o segundo a do destino |
 +-----------------------+-------------------------------+-----------------------------------------------------------------+
 
 Expressões
@@ -40,7 +45,7 @@ Considerando **a** um valor expresso a 64 *bit*, previamente carregado em RAX.
 | para a esquerda       |                            |                                       |
 |                       |     a << p;                |     mov     p(%rip), %cl              |
 |                       |                            |     shl     %cl, %rax                 |
-+-----------------------+----------------------------+---------------------------------------+                                                    
++-----------------------+----------------------------+---------------------------------------+
 | Afetar o bit da       | .. code-block:: c          | .. code-block:: asm                   |
 | posição *p* com zero  |                            |                                       |
 |                       |     a & ~(1 << p);         |     mov     p(%rip), %cl              |
@@ -55,21 +60,21 @@ Considerando **a** um valor expresso a 64 *bit*, previamente carregado em RAX.
 |                       |                            |     mov     $1, %rdx                  |
 |                       |                            |     shl     %cl, %rdx                 |
 |                       |                            |     or      %rdx, %rax                |
-+-----------------------+----------------------------+---------------------------------------+                                                                                
++-----------------------+----------------------------+---------------------------------------+
 | Testar o valor do     |  .. code-block:: c         |  .. code-block:: asm                  |
 | bit da posição p      |                            |                                       |
 |                       |     if (a & (1 << p))      |     mov     p(%rip), %cl %cl          |
 |                       |                            |     mov     $1, %rdx                  |
 |                       |                            |     shl     %cl, %rdx                 |
-|                       |                            |     test    %rdx, %rax                |                             
+|                       |                            |     test    %rdx, %rax                |
 |                       |                            |     jz      label                     |
-+-----------------------+----------------------------+---------------------------------------+                            
++-----------------------+----------------------------+---------------------------------------+
 | Obter o campo de      |  .. code-block:: c         |  .. code-block:: asm                  |
 | n bits a começar      |                            |                                       |
 | na posição p.         |     (a >> p) & ~(~0 << n); |     mov     $~0, %rdx                 |
 |                       |                            |     mov     n(%rip), %cl              |
 |                       |                            |     shl     %cl, %rdx                 |
-|                       |                            |     not     %rdx                      |             
+|                       |                            |     not     %rdx                      |
 |                       |                            |     mov     p(%rip), %cl              |
 |                       |                            |     shr     %cl, %rax                 |
 |                       |                            |     and     %rdx, %rax                |
@@ -82,33 +87,33 @@ Considerando **a** um valor expresso a 64 *bit*, previamente carregado em RAX.
 |                       |                            |     lea   (%rax, %rdx, 4), %eax       |
 +-----------------------+----------------------------+---------------------------------------+
 
- 
+
 Considerando **a** um valor expresso a 128 bit previamente carregado em RDX:RAX.
-                  
+
 +-----------------------+----------------------------+---------------------------------------+
 | Deslocar 1 posição    |      .. code-block:: c     |  .. code-block:: asm                  |
 | para a esquerda       |                            |                                       |
 |                       |         a <<= 1;           |     shl    $1, %rax                   |
 |                       |                            |     rcl    $1, %rdx                   |
-+-----------------------+----------------------------+---------------------------------------+                             
++-----------------------+----------------------------+---------------------------------------+
 | Deslocar 1 posição    |      .. code-block:: c     |  .. code-block:: asm                  |
 | para a direita        |                            |                                       |
 |                       |         a >>= 1;           |     shr    $1, %rdx                   |
 |                       |                            |     rcr    $1, %rax                   |
 +-----------------------+----------------------------+---------------------------------------+
-| Deslocar **p**        |     .. code-block:: c      |  .. code-block:: asm                  | 
+| Deslocar **p**        |     .. code-block:: c      |  .. code-block:: asm                  |
 | posições              |                            |                                       |
 | para a esquerda       |        a <<= p;            |     mov     p(%rip), %cl              |
 |                       |                            |     shld    %cl, %rax, %rdx           |
 |                       |                            |     shl     $cl, %rax                 |
 +-----------------------+----------------------------+---------------------------------------+
-| Deslocar **N**        |     .. code-block:: c      |  .. code-block:: asm                  | 
+| Deslocar **N**        |     .. code-block:: c      |  .. code-block:: asm                  |
 | posições              |                            |                                       |
 | para a direita        |        a >>= N;            |     shrd    $N, %rdx, %rax            |
 |                       |                            |     shr     $N, %rdx                  |
 +-----------------------+----------------------------+---------------------------------------+
-                                                          
-                                                                                
+
+
 Controlo da execução
 --------------------
 
@@ -192,8 +197,8 @@ A instrução **call <endereço>** é equivalente à sequência **push rip; jmp 
    * ``call label``	salto relativo; a distância até à *label* é embutida no código da instrução.
    * ``call *%rax``	salto absoluto; o registo RAX contém o endereço da função
    * ``call *(%rax)``	salto absoluto; o registo RAX contém o endereço da posição de memória ende se encontra o endereço da função
-   
-   
+
+
 Para retornar à função chamadora (*caller*), a função chamada executa,
 em último lugar, a instrução **ret**.
 Esta instrução desempilha para o registo RIP, o endereço empilhado pela última instrução **call**,
@@ -269,9 +274,8 @@ Teste com *debugger*: ::
    $ insight use_getbits
 
 
-
-Acesso a dados
---------------
+Acesso a variáveis
+------------------
 
 Designam-se por variáveis estáticas, as variáveis alocadas em memória na altura da compilação.
 São as variáveis globais e as variáveis locais com atributo **static**.
@@ -302,7 +306,7 @@ realiza o acesso ao conteúdo dessas variáveis com endereçamento relativo ao R
 Em linguagem C quando se define um *array* estabelece-se um símbolo (no exemplo, **ca** e **ia**)
 que representa o ponteiro para o primeiro elemento do *array*. ::
 
-   char ca[10]; 
+   char ca[10];
    int ia[10];
 
 Em *assembly* este símbolo corresponde a uma *label* que define
@@ -325,12 +329,12 @@ por se tratar de um *array* de inteiros. ::
 .. table:: Exemplos de operações com ponteiros
    :widths: auto
    :align: center
-   
+
    +------------------------------------+------------------------------------------+
    |   .. code-block:: c                |   .. code-block:: asm                    |
    |                                    |                                          |
    |      &cp = *a                      |      lea    a(%rip), %rax                |
-   |                                    |      mov    %rax, cp(%rip)               |             
+   |                                    |      mov    %rax, cp(%rip)               |
    +------------------------------------+------------------------------------------+
    |   .. code-block:: c                |   .. code-block:: asm                    |
    |                                    |                                          |
@@ -471,9 +475,9 @@ os registos RBX, RBP, R12, R13, R14 e R15, se forem utilizados, devem ser preser
 .. figure:: register_rules.svg
    :align: center
    :scale: 120%
-   
+
 A cadeia de chamadas a funções num programa pode ser visualizada como uma árvore
-em que a função **main** se situa na posição da raiz. 
+em que a função **main** se situa na posição da raiz.
 As funções que são chamadas e que também chamam outras funções,
 situam-se nas posições dos ramos e são designadas por \"funções ramo\";
 as funções que apenas são chamadas situam-se nas posições das folhas
@@ -484,11 +488,11 @@ interessa classificar as funções como \"funções folha\" ou como \"funções 
 
 Função folha
 ..............
-   
+
    * Deve-se operar os argumentos diretamente no registos que os transportam.
    * Deve-se preferir utilizar os registos *caller saved*.
    * Se tiver que se utilizar os registos *callee saved* deve-se assegurar à saída da função o mesmo conteúdo que tinham à entrada.
-    
+
 **Exemplo**
 
 As funções de exemplos anteriores como ``get_lighter``, ``find_bigger``, ``strlen`` e ``unpack_date``
@@ -526,7 +530,7 @@ Variáveis locais em *stack*
 ---------------------------
 
 As variáveis locais são alojadas em *stack* se:
- 
+
    * a sua quantidade excede o número de registos disponíveis;
    * a sua dimensão não permite o alojamento em registo -- é o caso dos *arrays*;
    * é necessário aceder a essas variáveis através de ponteiros.
@@ -541,7 +545,7 @@ As variáveis locais são alojadas em *stack* se:
 .. figure:: stack4.svg
    :align: center
    :scale: 120%
-   
+
 À entrada da função o registo RSP apresenta o endereço de memória ``0x7fffffffdd58``.
 A instrução ``sub $24, %rsp`` ao subtrair 24 a RSP,
 reserva espaço para alojar as variáveis ``year``, ``month`` e ``day``.
@@ -570,7 +574,7 @@ de uma data representada numa *string* com o formato "2020-9-3".
 A reserva de espaço para o *array* local ``buffer`` é realizada nas linhas 14, 15 e 16.
 A dimensão necessária é estabelecida na linha 13 -- valor retornado por ``strlen`` mais um.
 
-Na linha 14 e 15 essa dimensão em EAX é arredondada por excesso para um valor múltiplo de 16. 
+Na linha 14 e 15 essa dimensão em EAX é arredondada por excesso para um valor múltiplo de 16.
 ((EAX + 15)  / 16)  * 16 ( o sinal / representa divisão inteira).
 
 Na linha 16 esse valor é subtraído a RSP consumando a reserva de espaço de memória para o array local buffer.
@@ -606,7 +610,7 @@ Entre as linhas 9 e 14 procede-se à passagem em registo dos restantes seis argu
 
 A convenção de chamada a funções define que na altura da execução da instrução ``call``
 o registo RSP deve estar alinhado num endereço múltiplo de 16.
-Como consequência, à entrada de uma função, o RSP está sempre desalinhado de endereço múltiplo de 16. 
+Como consequência, à entrada de uma função, o RSP está sempre desalinhado de endereço múltiplo de 16.
 Assim, a função atual pode basear-se neste pressuposto para efeito de alinhamento do RSP ao realizar outras chamadas.
 A instrução ``sub  $8, %rsp`` na linha 4 serve para cumprir esta convenção.
 Até à instrução ``call`` na linha 15, o RSP vai ser decrementado de 24 ficando alinhado num endereço múltiplo de 16.
