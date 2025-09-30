@@ -13,16 +13,34 @@ Ao mais baixo nível, um ficheiro é uma sequência de valores numéricos repres
 .. figure:: modelo_ficheiro3.svg
    :align: center
 
+|
+
 **Ficheiro de texto**
 
-Quando esses valores numéricos são códigos de caracteres, diz-se que é um ficheiro de texto.
+Quando esses valores numéricos são interpretados como códigos de caracteres,
+diz-se que é um ficheiro de texto.
 
-Um ficheiro de texto pode ser encarado como uma sequência de linhas de texto.
+Considere-se o ficheiro de texto ``afile.txt``: ::
+
+   $ cat afile.txt
+   bom dia
+   abcd 1234
+   PSC-25/26v
+
+Um ficheiro de texto é modelado como uma sequência de linhas de texto.
 Uma linha de texto é formada por uma sequência de caracteres terminada pela marcação de fim de linha.
 Esta marcação é representada na linguagem C por ``'\n'``.
 
 .. figure:: modelo_ficheiro1.svg
-   :align: center
+
+O utilitário hexdump permite uma visualização binária do ficheiro.
+Nos sistemas da família UNIX as marcações de fim de linha ``'\n'``
+são representadas pelo caractere Line Feed (LF) com valor numérico 0x0a: ::
+
+   $ hexdump -C afile.txt
+   00000000  62 6f 6d 20 64 69 61 0a  61 62 63 64 20 31 32 33  |bom dia.abcd 123|
+   00000010  34 0a 50 53 43 2d 32 35  2f 32 36 76 0a           |4.PSC-25/26v.|
+   0000001d
 
 ..	Mostrar aqui o conteúdo de um ficheiro com a ferramenta hexdump
 
@@ -37,8 +55,8 @@ Em modo binário o conteúdo é encarado como uma sequência de *bytes* indifere
 Em modo texto é encarado como uma sequência de linhas de texto,
 em que cada linha é formada por uma sequência de caracteres imprimíveis
 e terminadas por um marcador de fim de linha.
-No Unix o marcador é o caractere CR (*carriage return*),
-no Windows o marcador é a sequência CR-LF (*carriage return*-*linefeed*).
+No Unix o marcador é o caractere LF (*line feed*),
+no Windows o marcador é a sequência CR-LF (*carriage return*-*line feed*).
 
 Todos os ficheiros, incluindo os que contêm texto, podem ser interpretados em modo binário.
 
@@ -66,12 +84,13 @@ definidas na biblioteca normalizada, que representam o teclado e o ecrã. ::
    FILE *stdout = &struct_stdout;
    FILE *stderr = &struct_stderr;
 
-**Modo texto**
+.. figure:: stdio.svg
 
-O texto é enviado ou recolhido dos dispositivos como uma sequência de linhas.
-As linhas são formadas por caracteres terminadas por um caractere indicador de fim de linha -- ``\n``.
 No ecrã, a escrita do caractere ``\n`` provoca o posicionamento do cursor no início da linha seguinte.
 No teclado, a tecla ENTER produz o carácter \n.
+
+Acesso em modo texto
+--------------------
 
 Output
 ......
@@ -133,7 +152,7 @@ A função ``fscanf`` aplica a conversão de texto indicada em ``format``
 à medida que lê os caracteres do dispositivo representado por ``stream``. ::
 
   int fscanf(FILE *stream, const char *format, ... );
-  
+
 Especificações de conversão das funções da família  **scanf**: ::
 
 %*<width><lenght><conversion>
@@ -157,16 +176,21 @@ por segurança, devido não se poder controlar a escita na memória indicada por
    int scanf(const char *format, ...);
    int getchar();
 
-**Exemplo**
+Exemplo
+.......
 
+A função ``read_word`` lê palavras do *stream* indicado no parâmetro ``fd``.
+Uma palavra é uma sequência de caracteres que não pertençam
+ao conjunto dos caracteres delimitadores passado no parâmetro ``separators``.
 A função ``read_word`` utiliza a função ``fgetc`` para obter os sucessivos caracteres do ficheiro.
-A função tem um primeiro estado em que ignora todos os caracteres delimitadores
-e um segundo estado em que recolhe todos os caracteres até ao próximo delimitador.
+A sua programação tem um primeiro estado em que ignora todos os caracteres delimitadores (linhas 9 a 15)
+e um segundo estado em que recolhe todos os caracteres até ao próximo delimitador (linhas 16 a 27).
 
 Durante os dois estados verifica a terminação do ficheiro, caso em que interrompe o processamento e retorna -1.
-No segundo estado verifica também a dimensão de memória disponível para armazaneamento dos caracteres.
-Se esgotar, retorna -2. 
-Em qualquer dos casos retorna sempre uma *string* válida.
+No segundo estado verifica também, através do parâmetro ``buffer_size``,
+a dimensão disponível do *array* ``buffer`` para armazaneamento dos caracteres.
+Se esgotar, retorna -2.
+Em qualquer dos casos o *array* ``buffer`` recebe sempre uma *string* válida.
 
 .. literalinclude:: ../../../code/input_output/read_word.c
    :language: c
@@ -185,7 +209,8 @@ Essa substituição pode ser feita na invocação do programa na linha de comand
 O sinal **>** substitui, em ``stdout``, o *file descriptor* do ecrã pelo do ficheiro que se indicar.
 O sinal **<** substitui, em ``stdin``, o *file descriptor* do teclado pelo do ficheiro que se indicar.
 
-**Exemplos:**
+Exemplos
+........
 
 ::
 
@@ -267,10 +292,10 @@ SEEK_END posiciona em relação ao fim
 
    void rewind(FILE * stream);
 
-Modo binário
+Acesso em modo binário
 ------------
 
-Em modo binário, um ficheiro é encarado como uma sequência de bytes.
+Em modo binário, um ficheiro é encarado como uma sequência de *bytes*.
 
 Output
 ......
@@ -302,6 +327,16 @@ e insere o valor do parâmetro ``c`` nessa posição.
 
    int ungetc(int c, FILE *stream);
 
+Exemplo
+.......
+
+Programa para mostrar no terminal o conteúdo de um ficheiro em hexadecimal
+(semelhante a ``$ hexdump -C <file>``).
+
+.. literalinclude:: ../../../code/input_output/hexdump.c
+   :language: c
+   :linenos:
+
 Erros
 -----
 
@@ -332,15 +367,6 @@ A função ``strerror`` traduz um código de erro para texto descritivo. ::
 
    char * strerror(int errnum);
 
-**Exemplo**
-
-Programa para mostrar no terminal o conteúdo de um ficheiro em hexadecimal
-(semelhante a ``$ hexdump -C <file>``).
-
-.. literalinclude:: ../../../code/input_output/hexdump.c
-   :language: c
-   :linenos:
-
 Exercícios
 ----------
    1. Fazer uma programa para copiar ficheiros. Primeira versão - caractere a caractere; segunda versão - bloco a bloco.
@@ -350,9 +376,10 @@ Exercícios
 Referências
 -----------
 
-The C Programming Language
+The C Programming Language - Chapter 7 - Input and Output
 
 Norma da linguagem C - ISO/IEC 9899:2023 (draft `N3096 <https://www9.open-std.org/JTC1/SC22/WG14/www/docs/n3096.pdf>`_)
 
 `C reference <https://en.cppreference.com/w/c>`_
 
+`Wikipedia - C file input/output <https://en.wikipedia.org/wiki/C_file_input/output>`_
