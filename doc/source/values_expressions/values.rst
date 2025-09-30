@@ -827,7 +827,7 @@ mais quatro, mais dois, mais um, mais 0,5 e mais 0,125.
    :scale: 22%
    :name: real_fixed
 
-   Representação de número real em virgula fixa
+   Representação de número real em vírgula fixa
 
 **Exemplo**
 
@@ -840,19 +840,19 @@ Relativamente à :numref:`real_fixed` seria a posição 5.
    :language: c
    :linenos:
    :lines: 13-27
-   :caption: Conversão de texto para representação em virgula fixa
+   :caption: Conversão de texto para representação em vírgula fixa
 
 
 **Exemplo**
 
-Função para converter a representação de um número real em binário com virgula na posição ``BIN_FRAC``
+Função para converter a representação de um número real em binário com vírgula na posição ``BIN_FRAC``
 para uma representação em texto, na base decimal com ``DEC_FRAC`` casas decimais.
 
 .. literalinclude:: ../../../code/values_expressions/float/calc_fixed.c
    :language: c
    :linenos:
    :lines: 29,35-55
-   :caption: Conversão de representação em virgula fixa para texto
+   :caption: Conversão de representação em vírgula fixa para texto
 
 **Exercício**
 
@@ -874,7 +874,7 @@ Vírgula flutuante (IEEE 754)
    :align: center
    :scale: 120%
 
-   Representação de número real em virgula flutuante (formato IEEE754)
+   Representação de número real em vírgula flutuante (formato IEEE754)
 
 Os *bits* das posições 22 a 0 valem, respetivamente, os valores :math:`2^{-1}` a :math:`2^{-23}`.
 
@@ -882,7 +882,7 @@ Os *bits* das posições 22 a 0 valem, respetivamente, os valores :math:`2^{-1}`
    :align: center
    :scale: 120%
 
-   Visualização de número real em virgula flutuante (formato IEEE754)
+   Visualização de número real em vírgula flutuante (formato IEEE754)
 
 
 +-------+-------------+----------+----------------------------------------------------+
@@ -957,11 +957,9 @@ Menor magnitude codificável: 0 00000001 000 0000 0000 0000 0000 0000
 
    #define FLT_MIN 1.17549435082228750796873653722224568e-38F
 
-Maior magnitude codificável sem erro:
+Até ao valor 16777215 todos os valores inteiros são codificados sem erro.
 
-:math:`2^{150-127} * (1,11111111111111111111111)_2`
-
-Valor 16777215.
+:math:`2^{150-127} * (1,11111111111111111111111)_2 = 16777215`
 
 **Sempre que a mantissa (ou significante)
 tenha um afastamento entre dígitos significativos maior que 23 posições,
