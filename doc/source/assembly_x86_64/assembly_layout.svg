@@ -6,6 +6,7 @@
   <g id="Background"/>
   <g id="Background"/>
   <g id="Background"/>
+  <g id="Background"/>
   <g id="Background">
     <rect style="fill: #deddda; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.4; stroke: #000000" x="76" y="60" width="98" height="140" rx="0" ry="0"/>
     <rect style="fill: #deddda; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.4; stroke: #000000" x="12" y="60" width="32" height="140" rx="0" ry="0"/>
@@ -41,11 +42,11 @@
       <tspan x="128" y="228.183">argumentos da instrução</tspan>
       <tspan x="128" y="236.65">ou  da diretiva</tspan>
     </text>
-    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="240" y="211.481">
-      <tspan x="240" y="211.481">4ª coluna</tspan>
-      <tspan x="240" y="219.948"></tspan>
-      <tspan x="240" y="228.415">comentários</tspan>
-      <tspan x="240" y="236.881">até ao fim da linha</tspan>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="240" y="211.25">
+      <tspan x="240" y="211.25">4ª coluna</tspan>
+      <tspan x="240" y="219.717"></tspan>
+      <tspan x="240" y="228.183">comentários</tspan>
+      <tspan x="240" y="236.65">até ao fim da linha</tspan>
     </text>
     <line style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x1="12" y1="50" x2="304" y2="50"/>
     <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="16" y="46.625">
