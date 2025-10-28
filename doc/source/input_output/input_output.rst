@@ -293,7 +293,7 @@ SEEK_END posiciona em relação ao fim
    void rewind(FILE * stream);
 
 Acesso em modo binário
-------------
+----------------------
 
 Em modo binário, um ficheiro é encarado como uma sequência de *bytes*.
 
@@ -369,8 +369,8 @@ A função ``strerror`` traduz um código de erro para texto descritivo. ::
 
 Exercícios
 ----------
-   1. Fazer uma programa para copiar ficheiros. Primeira versão - caractere a caractere; segunda versão - bloco a bloco.
-   2. Fazer um programa para concatenar ficheiros.
+   1. Fazer uma programa para copiar ficheiros. Primeira versão - *byte* a *byte*; segunda versão - bloco a bloco.
+   2. Fazer um programa para concatenar ficheiros de texto.
    3. Fazer um programa para ordenar um ficheiro de texto pela ordem alfabética da linhas.
 
 Referências
