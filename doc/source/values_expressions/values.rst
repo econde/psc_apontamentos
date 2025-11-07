@@ -315,7 +315,7 @@ Constantes
 
 A plica é usada como separador de grupo. Exemplos:
    * 1'000'000 = um milhão (1_000_000 -- Kotlin);
-   * 0b0110'1010'1000 = 0x6a8 (0x0110_1010_1100 -- Kotlin).
+   * 0b0110'1010'1000 = 0x6a8 (0b0110_1010_1000 -- Kotlin).
 
 Em linguagem C os valores não alteráveis
 (o equivalente a **val** da linguagem Kotlin e designados por constantes na linguagem C)

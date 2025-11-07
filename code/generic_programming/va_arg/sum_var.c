@@ -13,10 +13,11 @@ int sum(int n, ...) {
 		return 0;
 	va_list ap;
 
-	va_start(ap, n);				/* ap = &n + 1 */
-	int result = va_arg(ap, int);	/* *((int *)ap++) */
+	va_start(ap, n);
+	int result = va_arg(ap, int);
 	for (int i = 1; i < n; ++i)
 		 result += va_arg(ap, int);
+	va_end(ap);
 	return result;
 }
 

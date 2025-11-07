@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:diagram xmlns:dia="http://www.lysator.liu.se/~alla/dia/">
+  <dia:diagramdata>
+    <dia:attribute name="background">
+      <dia:color val="#ffffffff"/>
+    </dia:attribute>
+    <dia:attribute name="pagebreak">
+      <dia:color val="#00007fff"/>
+    </dia:attribute>
+    <dia:attribute name="paper">
+      <dia:composite type="paper">
+        <dia:attribute name="name">
+          <dia:string>#A4#</dia:string>
+        </dia:attribute>
+        <dia:attribute name="tmargin">
+          <dia:real val="2.8222000598907471"/>
+        </dia:attribute>
+        <dia:attribute name="bmargin">
+          <dia:real val="2.8222000598907471"/>
+        </dia:attribute>
+        <dia:attribute name="lmargin">
+          <dia:real val="2.8222000598907471"/>
+        </dia:attribute>
+        <dia:attribute name="rmargin">
+          <dia:real val="2.8222000598907471"/>
+        </dia:attribute>
+        <dia:attribute name="is_portrait">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="scaling">
+          <dia:real val="1"/>
+        </dia:attribute>
+        <dia:attribute name="fitto">
+          <dia:boolean val="false"/>
+        </dia:attribute>
+      </dia:composite>
+    </dia:attribute>
+    <dia:attribute name="grid">
+      <dia:composite type="grid">
+        <dia:attribute name="dynamic">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="width_x">
+          <dia:real val="1"/>
+        </dia:attribute>
+        <dia:attribute name="width_y">
+          <dia:real val="1"/>
+        </dia:attribute>
+        <dia:attribute name="visible_x">
+          <dia:int val="1"/>
+        </dia:attribute>
+        <dia:attribute name="visible_y">
+          <dia:int val="1"/>
+        </dia:attribute>
+        <dia:composite type="color"/>
+      </dia:composite>
+    </dia:attribute>
+    <dia:attribute name="color">
+      <dia:color val="#a8a8daff"/>
+    </dia:attribute>
+    <dia:attribute name="guides"/>
+    <dia:attribute name="guide_color">
+      <dia:color val="#00ff00ff"/>
+    </dia:attribute>
+    <dia:attribute name="display">
+      <dia:composite type="display">
+        <dia:attribute name="antialiased">
+          <dia:boolean val="false"/>
+        </dia:attribute>
+        <dia:attribute name="snap-to-grid">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="snap-to-guides">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="snap-to-object">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="show-grid">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="show-guides">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="show-connection-points">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+      </dia:composite>
+    </dia:attribute>
+  </dia:diagramdata>
+  <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="true" active="true">
+    <dia:object type="Standard - Box" version="0" id="O0">
+      <dia:attribute name="obj_pos">
+        <dia:point val="3,3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="2.975,2.975;3.825,3.825"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="3,3"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Text" version="1" id="O1">
+      <dia:attribute name="obj_pos">
+        <dia:point val="3.4,3.4"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="3.28875,3.16875;3.51125,3.63125"/>
+      </dia:attribute>
+      <dia:attribute name="text">
+        <dia:composite type="text">
+          <dia:attribute name="string">
+            <dia:string>#n#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="font">
+            <dia:font family="sans" style="80" name="Helvetica-Bold"/>
+          </dia:attribute>
+          <dia:attribute name="height">
+            <dia:real val="0.42333332874722224"/>
+          </dia:attribute>
+          <dia:attribute name="pos">
+            <dia:point val="3.4,3.53125"/>
+          </dia:attribute>
+          <dia:attribute name="color">
+            <dia:color val="#000000ff"/>
+          </dia:attribute>
+          <dia:attribute name="alignment">
+            <dia:enum val="1"/>
+          </dia:attribute>
+        </dia:composite>
+      </dia:attribute>
+      <dia:attribute name="valign">
+        <dia:enum val="2"/>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O0" connection="8"/>
+      </dia:connections>
+    </dia:object>
+    <dia:object type="Standard - Text" version="1" id="O2">
+      <dia:attribute name="obj_pos">
+        <dia:point val="4.8,4.8"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="4.60125,4.55141;5.01031,5.04859"/>
+      </dia:attribute>
+      <dia:attribute name="text">
+        <dia:composite type="text">
+          <dia:attribute name="string">
+            <dia:string>#ap#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="font">
+            <dia:font family="sans" style="0" name="Helvetica"/>
+          </dia:attribute>
+          <dia:attribute name="height">
+            <dia:real val="0.42333332874722224"/>
+          </dia:attribute>
+          <dia:attribute name="pos">
+            <dia:point val="4.8,4.92547"/>
+          </dia:attribute>
+          <dia:attribute name="color">
+            <dia:color val="#000000ff"/>
+          </dia:attribute>
+          <dia:attribute name="alignment">
+            <dia:enum val="1"/>
+          </dia:attribute>
+        </dia:composite>
+      </dia:attribute>
+      <dia:attribute name="valign">
+        <dia:enum val="2"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Box" version="0" id="O3">
+      <dia:attribute name="obj_pos">
+        <dia:point val="3.8,3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="3.775,2.975;4.625,3.825"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="3.8,3"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Box" version="0" id="O4">
+      <dia:attribute name="obj_pos">
+        <dia:point val="4.6,3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="4.575,2.975;5.425,3.825"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="4.6,3"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Box" version="0" id="O5">
+      <dia:attribute name="obj_pos">
+        <dia:point val="5.4,3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="5.375,2.975;6.225,3.825"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="5.4,3"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Box" version="0" id="O6">
+      <dia:attribute name="obj_pos">
+        <dia:point val="6.2,3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="6.175,2.975;7.025,3.825"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="6.2,3"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Box" version="0" id="O7">
+      <dia:attribute name="obj_pos">
+        <dia:point val="7,3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="6.975,2.975;7.825,3.825"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="7,3"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Box" version="0" id="O8">
+      <dia:attribute name="obj_pos">
+        <dia:point val="7.8,3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="7.775,2.975;8.625,3.825"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="7.8,3"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.80000000000000027"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Box" version="0" id="O9">
+      <dia:attribute name="obj_pos">
+        <dia:point val="4,4.6"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="3.975,4.575;4.425,5.025"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="4,4.6"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="0.40000000000000036"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="0.39999999999999947"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="0.050000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Line" version="0" id="O10">
+      <dia:attribute name="obj_pos">
+        <dia:point val="4.2,4.9"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="4.06646,3.785;4.33354,4.92121"/>
+      </dia:attribute>
+      <dia:attribute name="conn_endpoints">
+        <dia:point val="4.2,4.9"/>
+        <dia:point val="4.2,3.8"/>
+      </dia:attribute>
+      <dia:attribute name="numcp">
+        <dia:int val="1"/>
+      </dia:attribute>
+      <dia:attribute name="line_width">
+        <dia:real val="0.029999999999999999"/>
+      </dia:attribute>
+      <dia:attribute name="start_arrow">
+        <dia:enum val="8"/>
+      </dia:attribute>
+      <dia:attribute name="start_arrow_length">
+        <dia:real val="0.10000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="start_arrow_width">
+        <dia:real val="0.10000000000000003"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow">
+        <dia:enum val="22"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_length">
+        <dia:real val="0.20000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_width">
+        <dia:real val="0.20000000000000004"/>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="1" to="O3" connection="6"/>
+      </dia:connections>
+    </dia:object>
+  </dia:layer>
+</dia:diagram>

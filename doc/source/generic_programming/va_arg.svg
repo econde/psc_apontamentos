@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="6cm" height="3cm" viewBox="59 59 114 42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Background"/>
+  <g id="Background"/>
+  <g id="Background"/>
+  <g id="Background">
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="60" y="60" width="16" height="16" rx="0" ry="0"/>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="68" y="70.625">
+      <tspan x="68" y="70.625">n</tspan>
+    </text>
+    <text font-size="6.77333" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="96" y="98.5094">
+      <tspan x="96" y="98.5094">ap</tspan>
+    </text>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="76" y="60" width="16" height="16" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="92" y="60" width="16" height="16" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="108" y="60" width="16" height="16" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="124" y="60" width="16" height="16" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="140" y="60" width="16" height="16" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="156" y="60" width="16" height="16" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" x="80" y="92" width="8" height="8" rx="0" ry="0"/>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 0.6; stroke: #000000" x1="84" y1="98" x2="84" y2="79.6708"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.6; stroke: #000000" fill-rule="evenodd" d="M 84 98 C 83.5,98 83,97.5 83,97 C 83,96.5 83.5,96 84,96 C 84.5,96 85,96.5 85,97 C 85,97.5 84.5,98 84,98z"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.6; stroke: #000000" fill-rule="evenodd" points="84,76.6708 86,80.6708 84,79.6708 82,80.6708 "/>
+    </g>
+  </g>
+</svg>

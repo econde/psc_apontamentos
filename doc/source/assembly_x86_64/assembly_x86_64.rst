@@ -883,6 +883,9 @@ O argumento correspondente ao último parâmetro é o primeiro a ser empilhado
 e consequentemente ocupará o endereço mais alto.
 O argumento do parâmetro mais à esquerda é o que fica no topo do *stack*.
 
+Invocação da função
+...................
+
 +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
 | .. literalinclude:: ../../../code/assembly_x86_64/stack_frame/use_func8args.c   | .. literalinclude:: ../../../code/assembly_x86_64/stack_frame/use_func8args_asm.s   |
 |    :language: c                                                                 |    :language: asm                                                                   |
@@ -907,6 +910,9 @@ Assim, a função atual pode basear-se neste pressuposto para efeito de alinhame
 A instrução ``sub  $8, %rsp`` na linha 4 serve para cumprir esta convenção.
 Até à instrução ``call`` na linha 15, o RSP vai ser decrementado de 24 ficando alinhado num endereço múltiplo de 16.
 
+Acesso aos argumentos em *stack*
+................................
+
 +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
 | .. literalinclude:: ../../../code/assembly_x86_64/stack_frame/func8args.c       | .. literalinclude:: ../../../code/assembly_x86_64/stack_frame/func8args_asm.s       |
 |    :language: c                                                                 |    :language: asm                                                                   |
@@ -928,8 +934,8 @@ O acesso a ``a4p`` é realizado na linha 4.
 O acesso a ``a4`` é realizado na linha 8. ``8(%rsp)`` equivale ao endereço ``0x7fffffffdd58``
 que é o local do *stack* onde se encontra o argumento ``x4``.
 
-Exemplo -- função com mais de seis argumentos
-.............................................
+Argumentos em *stack* e variáveis locais
+........................................
 
 Neste exemplo vai ser mostrada uma utilização do *stack* mais abrangente.
 Além de utilizado na passagem de argumentos vai também ser utilizado para alojamento de variáveis locais.
